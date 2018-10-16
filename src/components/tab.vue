@@ -6,7 +6,7 @@
       <router-link to="/books"><span class="item b">图书</span></router-link>
       <router-link to="/broadcast"><span class="item c">广播</span></router-link>
       <router-link to="/team"><span class="item d">小组</span></router-link>
-      <router-link to="/item"><span class="item e"><span class="iconfont icon-sousuo_1"></span></span></router-link>
+      <router-link to="/item"><span class="item e"><span class="iconfont  icon-sousuo_1"></span></span></router-link>
     </nav>
   </div>
 </template>
@@ -16,10 +16,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import "~@/iconfont/iconfont.css";
+
 .container{
   position: fixed;
   min-width: 320px;
+  max-width: 600px;
+  margin: auto;
+  left: 0;
+  right: 0;
   top: 0;
   width: 100%;
   box-sizing: border-box;

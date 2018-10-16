@@ -15,6 +15,10 @@ export default {
     data: {
       type: Array,
       default: () => []
+    },
+    top: {
+      type: Boolean,
+      default: true
     }
   },
   mounted () {
@@ -27,6 +31,9 @@ export default {
         probeType: 2,
         pullUpLoad: {
           threshold: 10
+        },
+        bounce: {
+          top: this.top
         }
       })
       this.scroll.on('pullingUp', () => {
