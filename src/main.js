@@ -5,15 +5,40 @@ import App from './App'
 import router from './router'
 import ElementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-// import Icon from 'vue-svg-icon/Icon.vue'
+import vueScrollBehavior from 'vue-scroll-behavior'
 import '@/iconfont/iconfont.css'
+import store from '@/store'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
+
 Vue.config.productionTip = false
 Vue.use(ElementUi)
-// Vue.component('icon', Icon)
+Vue.use(vueScrollBehavior, {router: router})
 /* eslint-disable no-new */
+const requireComponent = require.context(
+  './base',
+  false,
+  /adv\.(vue|js)$/
+)
+console.log(requireComponent)
+requireComponent.keys().forEach(fileName => {
+  const componentConfig = requireComponent(fileName)
+  console.log(fileName)
+  const componentName = upperFirst(
+    camelCase(
+      fileName.replace(/\.\/(.*)\.\w+$/, '$1')
+    )
+  )
+  console.log(componentName)
+  Vue.component(
+    componentName,
+    componentConfig.default || componentConfig
+  )
+})
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

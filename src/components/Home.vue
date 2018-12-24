@@ -77,7 +77,8 @@ export default {
   filters: {
     subStr (value) {
       let newval = value.replace(/<.*?>/g, '')
-      return newval.slice(0, 70)
+      newval = newval.replace(/[a-zA-z]+:\/\/[^\s]*/g, '')
+      return newval.slice(0, 60)
     }
   }
 }
@@ -128,7 +129,8 @@ export default {
       border-bottom: 1px solid #f3f3f3;
       display: flex;
       justify-content: space-between;
-      padding: 25px 1px 25px 18px;
+      padding: 25px 1px 25px 0;
+      margin-left: 18px;
       &:last-child {
         border-bottom: none;
       }
@@ -137,7 +139,7 @@ export default {
         padding-left: 10%;
         img {
           width: 80%;
-          height: 80%;
+          // height: 80%;
         }
       }
       .left {

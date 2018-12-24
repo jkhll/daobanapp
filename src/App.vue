@@ -47,6 +47,7 @@ a {
   #app {
     display: block;
     width: 600px;
+    margin: auto;
   }
 }
 </style>

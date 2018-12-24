@@ -2,7 +2,7 @@
 <div class="detail">
   <scroll class="scroll" ref="wrapper" :data="content" :top="false">
     <div>
-      <mheader></mheader>
+      <m-header></m-header>
       <div class="content">
         <span v-for="item in tags" :key="item" class="tags">{{item}}<span class="iconfont icon-youjiaobiao"></span></span>
         <h1>{{content[$route.params.detail].title}}
@@ -51,7 +51,7 @@
 </div>
 </template>
 <script>
-import mheader from '@/base/header'
+import MHeader from '@/base/MHeader'
 // import loading from '@/base/Loading'
 import scroll from '@/base/scroll'
 // import { setTimeout } from 'timers'
@@ -64,7 +64,7 @@ export default {
     }
   },
   components: {
-    mheader,
+    MHeader,
     // loading,
     scroll
   },
