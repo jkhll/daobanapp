@@ -13,10 +13,23 @@
         @click="gettt"
       >搜索</a>
     </form>
-    <div></div>
+    <div class="list">
+      <div class="listSmall" v-for="item in $store.state.search.resData.subjects" :key="item.collect_count">
+        <img :src="item.images.small">
+        <div>
+        <p>{{item.title}}</p>
+        <span v-for="star in itemClass(item.rating.average)" :key="star.id" class="iconfont" :class=star></span>
+            {{item.rating.average}}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+const LENGTH = 5 // 定义星星个数
+const CLS_ON = 'icon-star-full' // 定义全星的类名
+const CLS_HALF = 'icon-star-half' // 定义半星的类名
+const CLS_OFF = 'icon-star-empty' // 定义灰色全星的类名
 export default {
   data () {
     return {
@@ -35,6 +48,23 @@ export default {
   methods: {
     gettt () {
       this.$store.dispatch('toSearch', { q: this.search })
+      console.log(this.$store.state.search.resData)
+    },
+    itemClass (score) {
+      let result = []
+      let fullstar = Math.floor(score / 2)
+      let halfstar = Math.floor(score) % 2
+      let emptystar = LENGTH - halfstar - fullstar
+      for (let i = 0; i < fullstar; i++) {
+        result.push(CLS_ON)
+      }
+      for (let i = 0; i < halfstar; i++) {
+        result.push(CLS_HALF)
+      }
+      for (let i = 0; i < emptystar; i++) {
+        result.push(CLS_OFF)
+      }
+      return result
     }
   },
   destroyed () {
@@ -61,6 +91,25 @@ export default {
       box-sizing: border-box;
       padding: 5px 20px 5px 0px;
       color: #000;
+    }
+  }
+  .list {
+    .listSmall {
+      display: flex;
+      padding: 15px;
+      border-bottom: 1px solid #f3f3f3;
+      div {
+        padding: 10px 0 0 5px;
+        span {
+          padding-top: 5px;
+          color: orange;
+        }
+      }
+
+    }
+    img {
+      width: 40px;
+      height: 50px;
     }
   }
 }
