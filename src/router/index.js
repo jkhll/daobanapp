@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from 'components/Login'
 import home from 'components/Home'
 import movies from 'components/Movies'
 import detail from 'components/detail'
@@ -8,6 +7,8 @@ import subject from '@/base/subject'
 import Foo from '../components/item'
 import search from '../components/search'
 import notcomplete from '../components/NotComplete'
+
+const Login = () => import('components/Login')
 Vue.use(Router)
 
 export default new Router({
