@@ -10,8 +10,14 @@ import '@/iconfont/iconfont.css'
 import store from '@/store'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
+import VueLazyload from 'vue-lazyload'
 
 Vue.config.productionTip = false
+Vue.use(VueLazyload, {
+  preLoad: 1.6,
+  loading: require('./assets/douban-app-logo.png'),
+  error: require('./assets/douban-app-logo.png')
+})
 Vue.use(ElementUi)
 Vue.use(vueScrollBehavior, {router: router})
 /* eslint-disable no-new */
@@ -20,7 +26,8 @@ const requireComponent = require.context(
   false,
   /adv\.(vue|js)$/
 )
-console.log(requireComponent)
+
+// console.log(requireComponent)
 requireComponent.keys().forEach(fileName => {
   const componentConfig = requireComponent(fileName)
   console.log(fileName)

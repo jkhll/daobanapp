@@ -1,6 +1,8 @@
 # webapp
 
-> A Vue.js project
+仿写豆瓣移动端app
+
+预览地址： https://jkhll.github.io/daobanapp/dist/index.html#/home
 
 ## Build Setup
 

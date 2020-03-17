@@ -3,7 +3,7 @@
     <ul v-if="data.length" class='hasCover'>
       <li v-for="item in data" class="item" :key="item.id">
         <router-link :to="'/subject/' + item.id">
-          <img :src="item.images.small" alt="电影">
+          <img v-lazy="item.images.small" alt="电影">
           <p class="name">{{item.title}}</p>
           <div class="rating"  v-if="item.rating.average">
             <span v-for="star in itemClass(item.rating.average)" :key="star.id" class="iconfont" :class=star></span>
