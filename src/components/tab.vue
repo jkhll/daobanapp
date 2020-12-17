@@ -4,8 +4,8 @@
     <nav>
       <router-link to="/movies"><span  class="item a">电影</span></router-link>
       <router-link to="/books"><span class="item b">图书</span></router-link>
-      <router-link to="/broadcast"><span class="item c">广播</span></router-link>
-      <router-link to="/team"><span class="item d">小组</span></router-link>
+      <!-- <router-link to="/broadcast"><span class="item c">广播</span></router-link>
+      <router-link to="/team"><span class="item d">小组</span></router-link> -->
       <router-link to="/item"><span class="item e"><span class="iconfont  icon-sousuo_1"></span></span></router-link>
     </nav>
   </div>

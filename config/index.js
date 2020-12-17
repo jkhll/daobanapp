@@ -12,7 +12,19 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/jsonp1': {
-        target: 'https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items?os=ios&callback=jsonp1&start=0&count=8&loc_id=0&_=1541209399222',
+        target: 'http://t.yushu.im/v2/movie/in_theaters?count=8&apikey=0df993c66c0c636e29ecbb5344252a4a&callback=__jp0',
+        // target: 'https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items?os=ios&callback=jsonp1&start=0&count=8&loc_id=0&_=1541209399222',
+        bypass: function(req, res, proxyoptions) {
+          req.headers.referer = "https://m.douban.com/book/"
+        },
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api1': ''
+        }
+      },
+      '/jsonp2': {
+        target: 'http://t.yushu.im/v2/movie/top250?count=8&apikey=0df993c66c0c636e29ecbb5344252a4a&callback=__jp0',
+        // target: 'https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items?os=ios&callback=jsonp1&start=0&count=8&loc_id=0&_=1541209399222',
         bypass: function(req, res, proxyoptions) {
           req.headers.referer = "https://m.douban.com/book/"
         },
@@ -20,7 +32,40 @@ module.exports = {
         pathRewrite: {
           '^/api': ''
         }
-      }
+      },
+      '/jsonp3': {
+        target: 'http://t.yushu.im/v2/movie/coming_soon?count=8&apikey=0df993c66c0c636e29ecbb5344252a4a&callback=__jp0',
+        // target: 'https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items?os=ios&callback=jsonp1&start=0&count=8&loc_id=0&_=1541209399222',
+        bypass: function(req, res, proxyoptions) {
+          req.headers.referer = "https://m.douban.com/book/"
+        },
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      },
+      '/jsonp4': {
+        target: 'http://t.yushu.im/v2/movie/subject/305?apikey=0df993c66c0c636e29ecbb5344252a4a',
+        // target: 'https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items?os=ios&callback=jsonp1&start=0&count=8&loc_id=0&_=1541209399222',
+        bypass: function(req, res, proxyoptions) {
+          req.headers.referer = "https://m.douban.com/book/"
+        },
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      },
+      '/jsonp5': {
+        target: 'http://t.yushu.im/v2//book/search?q=虚构类&count=8&apikey=0df993c66c0c636e29ecbb5344252a4a',
+        // target: 'https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items?os=ios&callback=jsonp1&start=0&count=8&loc_id=0&_=1541209399222',
+        bypass: function(req, res, proxyoptions) {
+          req.headers.referer = "https://m.douban.com/book/"
+        },
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      },
     },
 
     // Various Dev Server settings

@@ -21,9 +21,9 @@ axios.defaults.withCredentials = true
 export default {
   data () {
     return {
-      email: 'o',
-      name: 'o',
-      password: 'o'
+      email: '',
+      name: '',
+      password: ''
     }
   },
   methods: {

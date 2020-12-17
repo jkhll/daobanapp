@@ -32,16 +32,26 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import scroll from '@/base/scroll'
 import { getList } from '@/api/home.js'
 import loading from '@/base/Loading'
+
 let count = 4
 let start = 0
 export default {
+  computed: {
+    ...mapState({
+      subject: state => state.movie.moviedata
+    })
+  },
   mounted () {
     this.$nextTick(
       this._getList()
     )
+    setTimeout(() => {
+      console.log(this.subject[0].title)
+    }, 1000)
   },
   data () {
     return {

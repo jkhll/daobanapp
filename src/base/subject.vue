@@ -9,7 +9,7 @@
       <h1 class="title">{{subject.title}}</h1>
       <div class="subject-info">
         <div class="right">
-          <img :src=subject.images.small>
+          <img :src=subject.images.large>
         </div>
         <div class="left">
           <span
@@ -18,9 +18,9 @@
             class="iconfont"
             :class=star
           >
-          </span>{{subject.rating.average}}<span class="average">{{subject.ratings_count}}人评分</span>
-          <template v-if="subject.genres && subjectMeta">
-            <p class="meta">{{subjectMeta}}</p>
+          </span>{{subject.rating.average}}<span class="average">{{subject.comments_count}}人评分</span>
+          <template v-if="subject.summary">
+            <p class="meta">{{subject.summary}}</p>
           </template>
         </div>
       </div>
@@ -40,6 +40,7 @@ const CLS_ON = 'icon-star-full' // 定义全星的类名
 const CLS_HALF = 'icon-star-half' // 定义半星的类名
 const CLS_OFF = 'icon-star-empty' // 定义灰色全星的类名
 export default {
+  name: 'subject',
   data () {
     return {
       showLoading: true,
@@ -48,6 +49,7 @@ export default {
   },
   created () {
     this.init()
+    console.log(this.subject[0])
   },
   computed: {
     ...mapGetters([
@@ -57,12 +59,14 @@ export default {
   methods: {
     init () {
       const id = this.$route.params.id
+      // console.log(this.$route.params.id)
       this.$store.dispatch({
         type: 'getSubject',
         id: id,
         classify: 'movie'
       }).then((res) => {
-        this.subject = res
+        this.subject = res[this.$route.params.id]
+        // console.log(this.subject.images.large)
         this.showLoading = false
       })
     },
@@ -117,19 +121,22 @@ export default {
           padding-left: 0.8rem;
         }
         .meta {
+          text-align: justify;
           color: #494949;
           margin-top: 15px;
-          font-size: 14px;
-          line-height: 20px;
+          font-size: 13px;
+          line-height: 16px;
           margin-right: 1rem;
         }
       }
       .right {
         float: right;
+        max-width: 6.25rem;
         img {
           display: block;
           width: 100%;
           max-width: 6.25rem;
+          margin-right: 10px;
         }
       }
     }

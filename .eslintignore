@@ -2,3 +2,6 @@
 /config/
 /dist/
 /*.js
+/src/base/hscroll.vue
+/src/components/books.vue
+/src/store/modules
